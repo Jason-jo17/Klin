@@ -44,7 +44,7 @@ Sandbox:          native `<iframe sandbox>` + postMessage — no third-party
 Deployment:        Vercel (apps/bench only — everything else runs via `pnpm dev`
                    with zero cloud dependency)
 License:          MIT (LICENSE file at repo root, SPDX headers not required per-file)
-Node:             >=20.11.0 (pin in .nvmrc and package.json "engines")
+Node:             >=20.18.0 (pin in .nvmrc and package.json "engines")
 ```
 
 Never say "latest" in any generated `package.json` — use the caret ranges above.
@@ -139,7 +139,7 @@ kiln/
 │
 ├── turbo.json
 ├── pnpm-workspace.yaml
-├── .nvmrc                                       # "20.11.0"
+├── .nvmrc                                       # "20.18.0"
 ├── LICENSE                                      # MIT
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md

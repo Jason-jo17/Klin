@@ -50,6 +50,8 @@ jobs:
     needs: lint-typecheck-build
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push' }}
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -71,13 +73,9 @@ jobs:
 
       - name: Start the Bench
         run: pnpm --filter @kiln/bench start &
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Wait for the Bench to be ready
         run: npx wait-on http://localhost:3000 --timeout 60000
 
       - name: Run the Jury's fixed prompt-suite regression check
         run: pnpm jury run --all --suite fixed-prompts.json --baseUrl http://localhost:3000
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

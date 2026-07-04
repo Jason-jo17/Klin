@@ -1,0 +1,24 @@
+{
+  "default": [
+    "Show quarterly revenue by region as a bar chart."
+  ],
+  "static-tool-ui-dashboard": [
+    "Show quarterly revenue by region.",
+    "Compare this month's signups to last month's."
+  ],
+  "static-mcp-tool-cards": [
+    "List the open issues assigned to me."
+  ],
+  "declarative-json-schema-form": [
+    "Build a form to collect a customer's shipping address."
+  ],
+  "declarative-a2ui-agent-panel": [
+    "Show me a status panel for the current deployment."
+  ],
+  "declarative-mcp-ui-resource": [
+    "Render the latest build result as a resource card."
+  ],
+  "open-ended-sandboxed-artifact": [
+    "Build a simple pomodoro timer."
+  ]
+}

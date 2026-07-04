@@ -1,0 +1,29 @@
+{
+  "id": "declarative-json-schema-form",
+  "name": "JSON Schema Form",
+  "strategy": "declarative",
+  "subPattern": "json-schema",
+  "description": "The model emits a JSON UI tree validated against a fixed Zod schema, rendered by the client's own design system — never raw HTML.",
+  "whenToUse": "Reach for Declarative GenUI when you need more shape variety than a static catalog but still want a hard validation boundary and full control over the rendered DOM/design system. Good fit for forms, settings panels, and structured data-entry surfaces.",
+  "tradeoffs": {
+    "safety": 4,
+    "flexibility": 3,
+    "latency": 3,
+    "setupComplexity": 3
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/declarative-json-schema-form",
+  "previewPrompts": [
+    "Build a form to collect a customer's shipping address.",
+    "Build a signup form with name, email, and a plan selector.",
+    "Build a feedback form with a rating field and a comments field.",
+    "Build a simple contact form."
+  ],
+  "juryThresholds": {
+    "accessibility": 4,
+    "tokenAdherence": 4,
+    "structuralValidity": 5,
+    "safety": 5,
+    "maxLatencyMs": 5000
+  }
+}

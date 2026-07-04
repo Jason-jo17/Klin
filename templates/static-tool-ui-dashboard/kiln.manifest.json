@@ -1,0 +1,29 @@
+{
+  "id": "static-tool-ui-dashboard",
+  "name": "Static Tool-UI Dashboard",
+  "strategy": "static",
+  "subPattern": "ai-sdk-tools",
+  "description": "AI SDK tool calls mapped 1:1 to a fixed catalog of pre-built dashboard components — the model never emits markup.",
+  "whenToUse": "Reach for Static GenUI when your product has a small, well-known set of visualizations or actions and brand consistency matters more than open-ended flexibility. It's the safest strategy because the component catalog itself is the safety boundary — there's no code path where model output becomes markup.",
+  "tradeoffs": {
+    "safety": 5,
+    "flexibility": 1,
+    "latency": 5,
+    "setupComplexity": 2
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/static-tool-ui-dashboard",
+  "previewPrompts": [
+    "Show quarterly revenue by region.",
+    "Compare this month's signups to last month's.",
+    "Give me the top 5 accounts by ARR as a table.",
+    "Show a metric card for active users this week."
+  ],
+  "juryThresholds": {
+    "accessibility": 4,
+    "tokenAdherence": 4,
+    "structuralValidity": 5,
+    "safety": 5,
+    "maxLatencyMs": 4000
+  }
+}

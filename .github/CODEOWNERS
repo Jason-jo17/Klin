@@ -1,0 +1,7 @@
+# BYOK key-handling code is security-critical — see docs/SECURITY.md §1.
+# Branch protection for this repo should require 2 approvals from
+# @kiln/core-maintainers on any PR touching these paths.
+apps/bench/lib/byok/                      @kiln/core-maintainers
+apps/bench/app/api/proxy/                 @kiln/core-maintainers
+apps/bench/app/api/templates/             @kiln/core-maintainers
+packages/sandbox-runtime/                 @kiln/core-maintainers

@@ -1,0 +1,47 @@
+:root {
+  /* Primary scale — graphite-indigo, 50→950 */
+  --kiln-primary-50: #f4f5fb;
+  --kiln-primary-100: #e6e8f7;
+  --kiln-primary-200: #c9cdee;
+  --kiln-primary-300: #a3a9e0;
+  --kiln-primary-400: #7a7fd0;
+  --kiln-primary-500: #5b5ec0;
+  --kiln-primary-600: #4745a8;
+  --kiln-primary-700: #383689;
+  --kiln-primary-800: #2b2a68;
+  --kiln-primary-900: #1f1e4a;
+  --kiln-primary-950: #131230;
+
+  /* Accent — "ember" — reserved ONLY for active-generation / live states */
+  --kiln-ember-400: #ff8a4c;
+  --kiln-ember-500: #ff6b1a;
+  --kiln-ember-600: #e2540a;
+
+  /* Semantic */
+  --kiln-success-500: #1f9d6b;
+  --kiln-warning-500: #d99a1b;
+  --kiln-error-500: #d9432f;
+  --kiln-info-500: #2f7fd9;
+
+  /* Surfaces — dark-first (this is a dev-tool audience) */
+  --kiln-surface-0: #0c0c14; /* deepest background */
+  --kiln-surface-1: #14141f; /* card/panel */
+  --kiln-surface-2: #1c1c2b; /* elevated/hover */
+  --kiln-surface-3: #262639; /* overlay/modal */
+  --kiln-border: #2e2e44;
+
+  --kiln-text-primary: #f3f3f8;
+  --kiln-text-secondary: #a8a8bf;
+  --kiln-text-tertiary: #6f6f88;
+}
+
+[data-theme="light"] {
+  --kiln-surface-0: #fafafc;
+  --kiln-surface-1: #ffffff;
+  --kiln-surface-2: #f1f1f7;
+  --kiln-surface-3: #e6e6f0;
+  --kiln-border: #dcdce8;
+  --kiln-text-primary: #14141f;
+  --kiln-text-secondary: #4a4a5c;
+  --kiln-text-tertiary: #7c7c8f;
+}

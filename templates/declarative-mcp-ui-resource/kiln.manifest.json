@@ -1,0 +1,28 @@
+{
+  "id": "declarative-mcp-ui-resource",
+  "name": "MCP-UI Resource",
+  "strategy": "declarative",
+  "subPattern": "mcp-ui",
+  "description": "MCP tool results carry an embedded ui:// resource whose declarative JSON payload is rendered by @kiln/schema's SchemaRenderer.",
+  "whenToUse": "Reach for this when tools already live behind MCP and you want the tool itself to own the UI payload (via an embedded ui:// resource) rather than having the client re-derive UI from plain tool-call arguments.",
+  "tradeoffs": {
+    "safety": 4,
+    "flexibility": 3,
+    "latency": 3,
+    "setupComplexity": 4
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/declarative-mcp-ui-resource",
+  "previewPrompts": [
+    "What's the latest build result on main?",
+    "Show me the build result for the flaky-branch.",
+    "Check the CI status for main."
+  ],
+  "juryThresholds": {
+    "accessibility": 4,
+    "tokenAdherence": 4,
+    "structuralValidity": 5,
+    "safety": 5,
+    "maxLatencyMs": 4500
+  }
+}

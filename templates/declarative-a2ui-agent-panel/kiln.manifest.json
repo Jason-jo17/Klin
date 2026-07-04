@@ -1,0 +1,29 @@
+{
+  "id": "declarative-a2ui-agent-panel",
+  "name": "A2UI Agent Panel",
+  "strategy": "declarative",
+  "subPattern": "a2ui",
+  "description": "An A2UI-inspired declarative surface contract purpose-built for agent-run status panels — panel/status/metric/timeline/action nodes only.",
+  "whenToUse": "Reach for this variant when you're building agent-observability or run-status surfaces specifically, and want a narrower, purpose-fit vocabulary instead of a general-purpose form schema.",
+  "tradeoffs": {
+    "safety": 4,
+    "flexibility": 2,
+    "latency": 3,
+    "setupComplexity": 3
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/declarative-a2ui-agent-panel",
+  "previewPrompts": [
+    "Show me a status panel for the current deployment.",
+    "Give me a run summary with three timeline events and a retry action.",
+    "Show a panel with CPU and memory metrics for the worker fleet.",
+    "Show a status panel for a failed run with a retry action."
+  ],
+  "juryThresholds": {
+    "accessibility": 4,
+    "tokenAdherence": 4,
+    "structuralValidity": 5,
+    "safety": 5,
+    "maxLatencyMs": 5000
+  }
+}

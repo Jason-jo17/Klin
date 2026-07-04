@@ -1,0 +1,6 @@
+@import "@kiln/tokens/tokens.css";
+@import "@kiln/ui/styles.css";
+
+body {
+  font-family: var(--kiln-font-body);
+}

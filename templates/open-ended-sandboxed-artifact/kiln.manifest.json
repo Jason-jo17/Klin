@@ -1,0 +1,29 @@
+{
+  "id": "open-ended-sandboxed-artifact",
+  "name": "Sandboxed Artifact",
+  "strategy": "open-ended",
+  "subPattern": "sandboxed-html",
+  "description": "The model writes a complete, free-form HTML document rendered inside a locked-down iframe — allow-scripts without allow-same-origin.",
+  "whenToUse": "Reach for Open-Ended GenUI when users need genuinely arbitrary, one-off interactive artifacts (a calculator, a mini-game, a bespoke visualization) and you're willing to invest in the strongest sandboxing to make that safe.",
+  "tradeoffs": {
+    "safety": 3,
+    "flexibility": 5,
+    "latency": 2,
+    "setupComplexity": 4
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/open-ended-sandboxed-artifact",
+  "previewPrompts": [
+    "Build a simple pomodoro timer.",
+    "Build a color palette generator.",
+    "Build a tip calculator.",
+    "Build a simple markdown previewer."
+  ],
+  "juryThresholds": {
+    "accessibility": 3,
+    "tokenAdherence": 2,
+    "structuralValidity": 4,
+    "safety": 5,
+    "maxLatencyMs": 6000
+  }
+}

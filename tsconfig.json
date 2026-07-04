@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "declaration": false,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "paths": {
+      "@kiln/tokens": ["packages/tokens/src/index.ts"],
+      "@kiln/tokens/*": ["packages/tokens/src/*"],
+      "@kiln/ui": ["packages/ui-primitives/src/index.ts"],
+      "@kiln/ui/*": ["packages/ui-primitives/src/*"],
+      "@kiln/schema": ["packages/genui-schema/src/index.ts"],
+      "@kiln/schema/*": ["packages/genui-schema/src/*"],
+      "@kiln/sandbox": ["packages/sandbox-runtime/src/index.ts"],
+      "@kiln/sandbox/*": ["packages/sandbox-runtime/src/*"],
+      "@kiln/jury": ["packages/jury/src/index.ts"],
+      "@kiln/jury/*": ["packages/jury/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".next", "**/.next/**"]
+}

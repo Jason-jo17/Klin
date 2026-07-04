@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  NODE_VERSION: "20.11.0"
+  PNPM_VERSION: "9.12.0"
+
+jobs:
+  lint-typecheck-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm turbo lint
+
+      - name: Typecheck (zero errors across all workspaces)
+        run: pnpm turbo typecheck
+
+      - name: Build (every template + the Bench build standalone)
+        run: pnpm turbo build
+
+      - name: Unit tests (schema validation, Jury rubric scoring, sandbox postMessage checks, rate limiter)
+        run: pnpm turbo test
+
+      - name: BYOK statelessness integration test (docs/SECURITY.md §1's testable claim)
+        run: pnpm --filter @kiln/bench test:integration
+
+  # The literal "validate generative UI builds" mechanism the repo exists to
+  # provide (build.md §9.3) — the most important job here, not an
+  # afterthought. Requires a live provider key, so it's skipped on PRs from
+  # forks that don't have repo secrets (their lint/typecheck/build job above
+  # still runs and still gates the merge on structural correctness).
+  jury-regression:
+    needs: lint-typecheck-build
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm turbo build
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @kiln/jury exec playwright install --with-deps chromium
+
+      - name: Start the Bench
+        run: pnpm --filter @kiln/bench start &
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Wait for the Bench to be ready
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run the Jury's fixed prompt-suite regression check
+        run: pnpm jury run --all --suite fixed-prompts.json --baseUrl http://localhost:3000
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

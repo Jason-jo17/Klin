@@ -1,0 +1,179 @@
+@import "@kiln/tokens/tokens.css";
+
+/* Button */
+.kiln-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kiln-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--kiln-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--kiln-duration-fast) var(--kiln-ease-out),
+    box-shadow var(--kiln-duration-fast) var(--kiln-ease-out),
+    background-color var(--kiln-duration-fast) var(--kiln-ease-out);
+}
+.kiln-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--kiln-shadow-md);
+}
+.kiln-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.kiln-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.kiln-button--sm { padding: var(--kiln-space-2) var(--kiln-space-3); font-size: 0.8125rem; }
+.kiln-button--md { padding: var(--kiln-space-3) var(--kiln-space-4); font-size: 0.9375rem; }
+.kiln-button--lg { padding: var(--kiln-space-4) var(--kiln-space-6); font-size: 1rem; }
+.kiln-button--primary { background: var(--kiln-primary-500); color: white; }
+.kiln-button--primary:hover:not(:disabled) { background: var(--kiln-primary-600); }
+.kiln-button--secondary { background: var(--kiln-surface-2); color: var(--kiln-text-primary); border-color: var(--kiln-border); }
+.kiln-button--ghost { background: transparent; color: var(--kiln-text-secondary); }
+.kiln-button--ghost:hover:not(:disabled) { background: var(--kiln-surface-2); }
+.kiln-button--danger { background: var(--kiln-error-500); color: white; }
+.kiln-button__spinner { animation: kiln-spin 0.8s linear infinite; }
+@keyframes kiln-spin { to { transform: rotate(360deg); } }
+
+/* Card */
+.kiln-card {
+  background: var(--kiln-surface-1);
+  border: 1px solid var(--kiln-border);
+  border-radius: var(--kiln-radius-lg);
+  box-shadow: var(--kiln-shadow-sm);
+  padding: var(--kiln-space-6);
+  transition: transform var(--kiln-duration-fast) var(--kiln-ease-out),
+    box-shadow var(--kiln-duration-fast) var(--kiln-ease-out);
+}
+.kiln-card--interactive { cursor: pointer; }
+.kiln-card--interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--kiln-shadow-md);
+}
+.kiln-card--interactive:active { transform: scale(0.98); }
+
+/* Field / Input */
+.kiln-field { display: flex; flex-direction: column; gap: var(--kiln-space-2); }
+.kiln-field__label { font-size: 0.8125rem; font-weight: 600; color: var(--kiln-text-secondary); }
+.kiln-field__error { font-size: 0.8125rem; color: var(--kiln-error-500); margin: 0; }
+.kiln-input-wrap { position: relative; display: flex; align-items: center; }
+.kiln-input {
+  width: 100%;
+  background: var(--kiln-surface-1);
+  border: 1px solid var(--kiln-border);
+  border-radius: var(--kiln-radius-md);
+  color: var(--kiln-text-primary);
+  padding: var(--kiln-space-3) var(--kiln-space-4);
+  font-size: 0.9375rem;
+  transition: border-color var(--kiln-duration-fast) var(--kiln-ease-out);
+}
+.kiln-input:hover { border-color: var(--kiln-primary-400); }
+.kiln-input--error { border-color: var(--kiln-error-500); }
+.kiln-input__toggle {
+  position: absolute;
+  right: var(--kiln-space-2);
+  background: transparent;
+  border: none;
+  color: var(--kiln-text-tertiary);
+  cursor: pointer;
+  display: inline-flex;
+  padding: var(--kiln-space-1);
+  border-radius: var(--kiln-radius-sm);
+}
+
+/* Dialog */
+.kiln-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--kiln-z-modal);
+  padding: var(--kiln-space-4);
+}
+.kiln-dialog {
+  background: var(--kiln-surface-1);
+  border: 1px solid var(--kiln-border);
+  border-radius: var(--kiln-radius-lg);
+  box-shadow: var(--kiln-shadow-lg);
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  animation: kiln-dialog-in var(--kiln-duration-base) var(--kiln-ease-out);
+}
+@keyframes kiln-dialog-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.kiln-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--kiln-space-6);
+  border-bottom: 1px solid var(--kiln-border);
+}
+.kiln-dialog__title { font-size: 1.125rem; }
+.kiln-dialog__close {
+  background: transparent;
+  border: none;
+  color: var(--kiln-text-secondary);
+  cursor: pointer;
+  padding: var(--kiln-space-2);
+  border-radius: var(--kiln-radius-sm);
+}
+.kiln-dialog__body { padding: var(--kiln-space-6); }
+
+/* Tabs */
+.kiln-tabs__list { display: flex; gap: var(--kiln-space-2); border-bottom: 1px solid var(--kiln-border); }
+.kiln-tabs__tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--kiln-text-secondary);
+  padding: var(--kiln-space-3) var(--kiln-space-4);
+  cursor: pointer;
+  font-weight: 500;
+  transition: color var(--kiln-duration-fast) var(--kiln-ease-out);
+}
+.kiln-tabs__tab--active { color: var(--kiln-primary-400); border-bottom-color: var(--kiln-primary-400); }
+.kiln-tabs__panel { padding-top: var(--kiln-space-4); }
+
+/* Tooltip */
+.kiln-tooltip-wrap { position: relative; display: inline-flex; }
+.kiln-tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--kiln-surface-3);
+  color: var(--kiln-text-primary);
+  border: 1px solid var(--kiln-border);
+  border-radius: var(--kiln-radius-sm);
+  padding: var(--kiln-space-1) var(--kiln-space-2);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  z-index: var(--kiln-z-tooltip);
+  transition: opacity var(--kiln-duration-fast) var(--kiln-ease-out);
+}
+.kiln-tooltip--top { bottom: calc(100% + var(--kiln-space-2)); }
+.kiln-tooltip--bottom { top: calc(100% + var(--kiln-space-2)); }
+.kiln-tooltip--visible { opacity: 1; }
+
+/* Skeleton */
+.kiln-skeleton {
+  background: linear-gradient(90deg, var(--kiln-surface-2) 25%, var(--kiln-surface-3) 50%, var(--kiln-surface-2) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--kiln-radius-sm);
+  animation: kiln-skeleton-pulse 1.5s ease-in-out infinite;
+}
+@keyframes kiln-skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kiln-skeleton { animation: none; opacity: 0.6; }
+}

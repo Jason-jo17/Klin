@@ -1,0 +1,29 @@
+{
+  "id": "static-mcp-tool-cards",
+  "name": "MCP Tool Cards",
+  "strategy": "static",
+  "subPattern": "mcp-ui",
+  "description": "Static GenUI where the tool results themselves come from a real MCP server, rendered into a fixed set of pre-built cards.",
+  "whenToUse": "Reach for this variant when you already have (or want) tools exposed over MCP — e.g. shared with other agent clients — but still want the strict static-catalog safety boundary on the rendering side.",
+  "tradeoffs": {
+    "safety": 5,
+    "flexibility": 1,
+    "latency": 4,
+    "setupComplexity": 3
+  },
+  "providerRequirements": ["anthropic", "openai", "google"],
+  "entryRoute": "/play/static-mcp-tool-cards",
+  "previewPrompts": [
+    "List my open issues.",
+    "What's the deployment status of the bench service?",
+    "Show issues assigned to morgan.",
+    "What's the status of the jury service?"
+  ],
+  "juryThresholds": {
+    "accessibility": 4,
+    "tokenAdherence": 4,
+    "structuralValidity": 5,
+    "safety": 5,
+    "maxLatencyMs": 4000
+  }
+}
